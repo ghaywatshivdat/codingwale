@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodingWalle | Code Your Future</title>
+
+    <meta name="description"
+          content="CodingWalle - Learn coding, build projects and develop your future.">
+
+    <style>
+
+        /* =====================================================
+           CODINGWALLE - INDEX PAGE
+           Premium Dark Coding Theme
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #050810;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =====================================================
+           BACKGROUND
+        ===================================================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #00e5ff;
+            filter: blur(180px);
+            opacity: 0.07;
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #7c4dff;
+            filter: blur(180px);
+            opacity: 0.08;
+            bottom: -200px;
+            right: -200px;
+            z-index: -1;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 5%;
+            transition: 0.3s;
+        }
+
+        header.scrolled {
+            background: rgba(5, 8, 16, 0.88);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .navbar {
+            max-width: 1250px;
+            margin: auto;
+            padding: 15px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(12,17,29,0.55);
+            backdrop-filter: blur(18px);
+            border-radius: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(135deg, #00e5ff, #7c4dff);
+            color: #050810;
+            font-weight: 900;
+            box-shadow: 0 0 25px rgba(0,229,255,0.2);
+        }
+
+        .logo span {
+            background: linear-gradient(90deg, #00e5ff, #9c6cff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #9ba7bd;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00e5ff;
+        }
+
+        .nav-btn {
+            padding: 11px 18px;
+            border-radius: 9px;
+
+            background: linear-gradient(135deg, #00e5ff, #7c4dff);
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,229,255,0.18);
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 150px 25px 80px;
+
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 14px;
+            border: 1px solid rgba(0,229,255,0.25);
+            background: rgba(0,229,255,0.05);
+
+            border-radius: 50px;
+
+            color: #00e5ff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 25px;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00e5ff;
+            box-shadow: 0 0 12px #00e5ff;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%,100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 6vw, 82px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            margin-bottom: 28px;
+        }
+
+        .gradient-text {
+            display: block;
+
+            background: linear-gradient(
+                90deg,
+                #00e5ff,
+                #8b5cf6,
+                #c084fc
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            color: #8995aa;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 14px 22px;
+            border-radius: 10px;
+
+            background: linear-gradient(135deg, #00e5ff, #7c4dff);
+
+            font-weight: 800;
+            color: #ffffff;
+
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,229,255,0.2);
+        }
+
+        .outline-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 14px 22px;
+            border-radius: 10px;
+
+            border: 1px solid #29354a;
+            color: #c3cada;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .outline-btn:hover {
+            border-color: #00e5ff;
+            color: #00e5ff;
+        }
+
+        /* =====================================================
+           CODE EDITOR
+        ===================================================== */
+
+        .editor {
+            position: relative;
+
+            background: #0a101c;
+            border: 1px solid #202c42;
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.55),
+                0 0 60px rgba(0,229,255,0.04);
+
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .editor-top {
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 18px;
+
+            background: #0e1625;
+            border-bottom: 1px solid #202c42;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #36445b;
+        }
+
+        .file-name {
+            color: #65738b;
+            font-size: 12px;
+        }
+
+        .editor-body {
+            padding: 28px;
+            min-height: 390px;
+
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 2;
+            color: #c7d0df;
+        }
+
+        .line-number {
+            color: #3e4b61;
+            margin-right: 20px;
+            user-select: none;
+        }
+
+        .keyword {
+            color: #c792ea;
+        }
+
+        .variable {
+            color: #82aaff;
+        }
+
+        .string {
+            color: #c3e88d;
+        }
+
+        .function {
+            color: #82aaff;
+        }
+
+        .comment {
+            color: #54627a;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 7px;
+            height: 17px;
+            background: #00e5ff;
+            vertical-align: middle;
+            animation: cursor 1s infinite;
+        }
+
+        @keyframes cursor {
+            0%,50% {
+                opacity: 1;
+            }
+
+            51%,100% {
+                opacity: 0;
+            }
+        }
+
+        /* =====================================================
+           TRUST BAR
+        ===================================================== */
+
+        .trust {
+            max-width: 1100px;
+            margin: 0 auto;
+
+            padding: 25px;
+
+            border-top: 1px solid #192337;
+            border-bottom: 1px solid #192337;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-item strong {
+            display: block;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .trust-item span {
+            color: #68758b;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .intro {
+            max-width: 1050px;
+            margin: auto;
+
+            text-align: center;
+
+            padding: 110px 25px 80px;
+        }
+
+        .section-label {
+            color: #00e5ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .intro h2 {
+            font-size: clamp(35px,5vw,55px);
+            margin: 15px 0;
+            letter-spacing: -2px;
+        }
+
+        .intro h2 span {
+            color: #00e5ff;
+        }
+
+        .intro p {
+            max-width: 750px;
+            margin: auto;
+            color: #7e8ba2;
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           BRANCH PREVIEW
+        ===================================================== */
+
+        .branches {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 25px 110px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 40px;
+            letter-spacing: -1px;
+        }
+
+        .section-heading p {
+            color: #778399;
+            margin-top: 6px;
+        }
+
+        .view-link {
+            color: #00e5ff;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .branch-card {
+            position: relative;
+
+            padding: 28px;
+
+            background: rgba(12,18,32,0.75);
+            border: 1px solid #1d293d;
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            transition: 0.35s;
+        }
+
+        .branch-card::before {
+            content: "";
+
+            position: absolute;
+            width: 100px;
+            height: 100px;
+
+            background: #00e5ff;
+            filter: blur(80px);
+            opacity: 0;
+
+            right: -30px;
+            top: -30px;
+
+            transition: 0.35s;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-8px);
+            border-color: #00e5ff;
+        }
+
+        .branch-card:hover::before {
+            opacity: 0.15;
+        }
+
+        .branch-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: #111b2c;
+            border: 1px solid #26344b;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .branch-card h3 {
+            font-size: 20px;
+            margin-bottom: 9px;
+        }
+
+        .branch-card p {
+            color: #78859b;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .branch-card span {
+            color: #00e5ff;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+
+            padding: 75px 30px;
+
+            text-align: center;
+
+            border: 1px solid #25334a;
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,0.07),
+                    rgba(124,77,255,0.09)
+                );
+        }
+
+        .cta h2 {
+            font-size: clamp(35px,5vw,55px);
+            letter-spacing: -2px;
+        }
+
+        .cta p {
+            color: #7f8ca1;
+            margin: 15px auto 30px;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            border-top: 1px solid #182236;
+            padding: 50px 25px 25px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo span {
+            color: #00e5ff;
+        }
+
+        .footer-text {
+            color: #66738a;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #8b97ab;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00e5ff;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #182236;
+            color: #4e5b70;
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 140px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .branch-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 10px;
+            }
+
+            .navbar {
+                padding: 11px 13px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo-icon {
+                width: 34px;
+                height: 34px;
+            }
+
+            .nav-btn {
+                padding: 9px 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 125px 18px 60px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .editor-body {
+                padding: 20px 15px;
+                font-size: 11px;
+            }
+
+            .trust {
+                gap: 20px;
+            }
+
+            .trust-item strong {
+                font-size: 23px;
+            }
+
+            .branch-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .view-link {
+                display: inline-block;
+                margin-top: 15px;
+            }
+
+            .cta {
+                margin: 0 15px 70px;
+                padding: 55px 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header id="navbar">
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-icon">
+                &lt;/&gt;
+            </div>
+
+            <span>CodingWalle</span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">Index</a>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+
+        <a href="courses.html" class="nav-btn">
+            Start Learning →
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="hero-badge">
+
+            <span class="live-dot"></span>
+
+            WELCOME TO THE CODINGWALLE
+
+        </div>
+
+
+        <h1>
+
+            Don't Just Learn Code.
+
+            <span class="gradient-text">
+                Build Your Future.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            CodingWalle is your modern learning space for programming,
+            web development, AI, data science, databases and cybersecurity.
+
+            Learn skills. Build projects. Become a developer.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="home.html" class="primary-btn">
+
+                Explore CodingWalle
+                <span>→</span>
+
+            </a>
+
+
+            <a href="courses.html" class="outline-btn">
+
+                View Courses
+                <span>↗</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CODE EDITOR -->
+
+    <div class="editor reveal">
+
+        <div class="editor-top">
+
+            <div class="dots">
+
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+
+            </div>
+
+            <div class="file-name">
+                codingwalle.js
+            </div>
+
+            <div></div>
+
+        </div>
+
+
+        <div class="editor-body">
+
+            <div>
+                <span class="line-number">01</span>
+                <span class="comment">// Your coding journey starts here</span>
+            </div>
+
+            <div>
+                <span class="line-number">02</span>
+                <span class="keyword">const</span>
+                <span class="variable">developer</span> = {
+            </div>
+
+            <div>
+                <span class="line-number">03</span>
+                &nbsp;&nbsp;name:
+                <span class="string">"Future Developer"</span>,
+            </div>
+
+            <div>
+                <span class="line-number">04</span>
+                &nbsp;&nbsp;platform:
+                <span class="string">"CodingWalle"</span>,
+            </div>
+
+            <div>
+                <span class="line-number">05</span>
+                &nbsp;&nbsp;skills: [
+            </div>
+
+            <div>
+                <span class="line-number">06</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="string">"HTML"</span>,
+            </div>
+
+            <div>
+                <span class="line-number">07</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="string">"CSS"</span>,
+            </div>
+
+            <div>
+                <span class="line-number">08</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="string">"JavaScript"</span>,
+            </div>
+
+            <div>
+                <span class="line-number">09</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="string">"Python"</span>,
+            </div>
+
+            <div>
+                <span class="line-number">10</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="string">"AI + Cyber Security"</span>
+            </div>
+
+            <div>
+                <span class="line-number">11</span>
+                &nbsp;&nbsp;],
+            </div>
+
+            <div>
+                <span class="line-number">12</span>
+                &nbsp;&nbsp;
+                <span class="function">startJourney</span>() {
+            </div>
+
+            <div>
+                <span class="line-number">13</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="keyword">return</span>
+                <span class="string">"Let's Build! 🚀"</span>;
+            </div>
+
+            <div>
+                <span class="line-number">14</span>
+                &nbsp;&nbsp;}
+            </div>
+
+            <div>
+                <span class="line-number">15</span>
+                };
+                <span class="cursor"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRUST / STATS
+===================================================== -->
+
+<section class="trust reveal">
+
+    <div class="trust-item">
+
+        <strong>05</strong>
+        <span>Learning Branches</span>
+
+    </div>
+
+
+    <div class="trust-item">
+
+        <strong>30+</strong>
+        <span>Courses</span>
+
+    </div>
+
+
+    <div class="trust-item">
+
+        <strong>100+</strong>
+        <span>Learning Topics</span>
+
+    </div>
+
+
+    <div class="trust-item">
+
+        <strong>∞</strong>
+        <span>Possibilities</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro reveal">
+
+    <div class="section-label">
+        ONE PLATFORM. MANY POSSIBILITIES.
+    </div>
+
+
+    <h2>
+
+        Your Journey From
+        <span>Beginner → Developer</span>
+
+    </h2>
+
+
+    <p>
+
+        Whether you are writing your first HTML tag or building advanced
+        applications, CodingWalle gives you a structured place to learn,
+        practice and explore the world of technology.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     5 BRANCHES
+===================================================== -->
+
+<section class="branches">
+
+    <div class="section-heading reveal">
+
+        <div>
+
+            <div class="section-label">
+                LEARNING BRANCHES
+            </div>
+
+            <h2>
+                Choose Your Path
+            </h2>
+
+            <p>
+                Start with the technology you want to master.
+            </p>
+
+        </div>
+
+
+        <a href="courses.html" class="view-link">
+            View All Courses →
+        </a>
+
+    </div>
+
+
+
+    <div class="branch-grid">
+
+
+        <!-- 01 -->
+
+        <a href="courses.html#web" class="branch-card reveal">
+
+            <div class="branch-icon">
+                🌐
+            </div>
+
+            <h3>
+                Web Development
+            </h3>
+
+            <p>
+                Build modern websites and web applications using
+                HTML, CSS, JavaScript, React and more.
+            </p>
+
+            <span>
+                Explore Branch →
+            </span>
+
+        </a>
+
+
+
+        <!-- 02 -->
+
+        <a href="courses.html#programming" class="branch-card reveal">
+
+            <div class="branch-icon">
+                💻
+            </div>
+
+            <h3>
+                Programming
+            </h3>
+
+            <p>
+                Master programming fundamentals with C, C++,
+                Java, Python and other languages.
+            </p>
+
+            <span>
+                Explore Branch →
+            </span>
+
+        </a>
+
+
+
+        <!-- 03 -->
+
+        <a href="courses.html#ai" class="branch-card reveal">
+
+            <div class="branch-icon">
+                🤖
+            </div>
+
+            <h3>
+                AI & Data Science
+            </h3>
+
+            <p>
+                Explore Python, artificial intelligence,
+                machine learning and data science.
+            </p>
+
+            <span>
+                Explore Branch →
+            </span>
+
+        </a>
+
+
+
+        <!-- 04 -->
+
+        <a href="courses.html#database" class="branch-card reveal">
+
+            <div class="branch-icon">
+                🗄️
+            </div>
+
+            <h3>
+                Database & Backend
+            </h3>
+
+            <p>
+                Learn SQL, MySQL, MongoDB, APIs, PHP and
+                backend development fundamentals.
+            </p>
+
+            <span>
+                Explore Branch →
+            </span>
+
+        </a>
+
+
+
+        <!-- 05 -->
+
+        <a href="courses.html#security" class="branch-card reveal">
+
+            <div class="branch-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Cyber Security
+            </h3>
+
+            <p>
+                Discover Linux, networking, security concepts
+                and cybersecurity fundamentals.
+            </p>
+
+            <span>
+                Explore Branch →
+            </span>
+
+        </a>
+
+
+
+        <!-- Extra -->
+
+        <a href="about.html" class="branch-card reveal">
+
+            <div class="branch-icon">
+                🚀
+            </div>
+
+            <h3>
+                Your Next Step
+            </h3>
+
+            <p>
+                Explore CodingWalle and discover where your
+                technology journey can take you.
+            </p>
+
+            <span>
+                Discover More →
+            </span>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta reveal">
+
+    <div class="section-label">
+        YOUR JOURNEY STARTS NOW
+    </div>
+
+
+    <h2>
+        One Line of Code
+        <br>
+        Can Change Everything.
+    </h2>
+
+
+    <p>
+        Stop waiting. Start learning. Start building.
+    </p>
+
+
+    <a href="home.html" class="primary-btn">
+
+        Enter CodingWalle
+        <span>→</span>
+
+    </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+
+        <span>&lt;/&gt;</span>
+        CodingWalle
+
+    </div>
+
+
+    <p class="footer-text">
+
+        Learn. Code. Build. Become.
+
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Index
+        </a>
+
+        <a href="home.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+        <a href="reviews.html">
+            Reviews
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 CodingWalle.
+        Built for the next generation of developers.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* Navbar background on scroll */
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 40) {
+
+            navbar.classList.add("scrolled");
+
+        } else {
+
+            navbar.classList.remove("scrolled");
+
+        }
+
+    });
+
+
+
+    /* Scroll reveal animation */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    revealElements.forEach(function(element) {
+
+        revealObserver.observe(element);
+
+    });
+
+</script>
+
+
+</body>
+</html>
