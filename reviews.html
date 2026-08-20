@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Read CodingWalle student reviews, ratings and feedback.">
+
+    <title>CodingWalle | Reviews</title>
+
+
+    <style>
+
+        /* =====================================================
+           CODINGWALLE - REVIEWS PAGE
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #050810;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           BACKGROUND
+        ===================================================== */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            top: -200px;
+            left: -200px;
+
+            background: #00e5ff;
+
+            filter: blur(180px);
+
+            opacity: .055;
+
+            z-index: -1;
+        }
+
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            right: -220px;
+            bottom: -220px;
+
+            background: #7c4dff;
+
+            filter: blur(180px);
+
+            opacity: .07;
+
+            z-index: -1;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        header {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(5, 8, 16, .88);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid #192438;
+        }
+
+
+        .navbar {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 15px 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 24px;
+
+            font-weight: 800;
+        }
+
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #7c4dff
+                );
+
+            color: #050810;
+
+            font-weight: 900;
+        }
+
+
+        .logo span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #a970ff
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            gap: 24px;
+        }
+
+
+        .nav-links a {
+            color: #919db2;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: .3s;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links .active {
+            color: #00e5ff;
+        }
+
+
+        .nav-button {
+            padding: 11px 18px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #7c4dff
+                );
+
+            color: #050810;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: .3s;
+        }
+
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,229,255,.15);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                90px 25px 65px;
+
+            text-align: center;
+        }
+
+
+        .hero-label {
+            color: #00e5ff;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .hero h1 {
+            font-size:
+                clamp(45px, 6vw, 70px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #8b5cf6
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .hero p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #7d899e;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           RATING OVERVIEW
+        ===================================================== */
+
+        .rating-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                0 25px 85px;
+        }
+
+
+        .rating-box {
+            display: grid;
+
+            grid-template-columns:
+                .8fr 1.2fr;
+
+            gap: 35px;
+
+            padding: 35px;
+
+            background: #0a101c;
+
+            border:
+                1px solid #202d42;
+
+            border-radius: 18px;
+        }
+
+
+        .overall-rating {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            border-right:
+                1px solid #202d42;
+        }
+
+
+        .rating-number {
+            font-size: 65px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #9d6cff
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .stars {
+            color: #ffd166;
+
+            font-size: 22px;
+
+            letter-spacing: 3px;
+
+            margin: 8px 0;
+        }
+
+
+        .rating-text {
+            color: #657289;
+
+            font-size: 12px;
+        }
+
+
+        .rating-bars {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            gap: 12px;
+        }
+
+
+        .rating-row {
+            display: grid;
+
+            grid-template-columns:
+                45px 1fr 45px;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #7d899e;
+
+            font-size: 12px;
+        }
+
+
+        .bar {
+            height: 8px;
+
+            background: #172236;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .bar-fill {
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #7c4dff
+                );
+        }
+
+
+        .fill-5 {
+            width: 91%;
+        }
+
+        .fill-4 {
+            width: 7%;
+        }
+
+        .fill-3 {
+            width: 2%;
+        }
+
+        .fill-2 {
+            width: 1%;
+        }
+
+        .fill-1 {
+            width: 0%;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                0 25px 90px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .stat {
+            padding: 25px;
+
+            text-align: center;
+
+            background: #0a101c;
+
+            border:
+                1px solid #1c293d;
+
+            border-radius: 15px;
+
+            transition: .3s;
+        }
+
+
+        .stat:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #00e5ff;
+        }
+
+
+        .stat h2 {
+            font-size: 30px;
+
+            color: #00e5ff;
+
+            margin-bottom: 4px;
+        }
+
+
+        .stat p {
+            color: #69768b;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           SECTION TITLE
+        ===================================================== */
+
+        .section-heading {
+            max-width: 1100px;
+
+            margin:
+                auto auto 35px;
+
+            padding:
+                0 25px;
+
+            text-align: center;
+        }
+
+
+        .section-label {
+            color: #00e5ff;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+
+        .section-heading h2 {
+            font-size: 40px;
+
+            margin-top: 8px;
+        }
+
+
+        .section-heading p {
+            color: #748198;
+
+            margin-top: 8px;
+        }
+
+
+        /* =====================================================
+           REVIEW GRID
+        ===================================================== */
+
+        .reviews {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                0 25px 100px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .review-card {
+            padding: 27px;
+
+            background: #0a101c;
+
+            border:
+                1px solid #1c293d;
+
+            border-radius: 16px;
+
+            transition: .35s;
+
+            position: relative;
+        }
+
+
+        .review-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                #00e5ff;
+
+            box-shadow:
+                0 18px 50px
+                rgba(0,0,0,.3);
+        }
+
+
+        .quote {
+            position: absolute;
+
+            top: 18px;
+            right: 22px;
+
+            color: #17283d;
+
+            font-size: 55px;
+
+            font-family: Georgia, serif;
+        }
+
+
+        .review-top {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .avatar {
+            width: 47px;
+            height: 47px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #7c4dff
+                );
+
+            color: #050810;
+
+            font-weight: 900;
+        }
+
+
+        .student h3 {
+            font-size: 15px;
+        }
+
+
+        .student p {
+            color: #657289;
+
+            font-size: 11px;
+        }
+
+
+        .review-stars {
+            color: #ffd166;
+
+            font-size: 14px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .review-text {
+            color: #8490a3;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            min-height: 95px;
+        }
+
+
+        .course-name {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            background: #111b2b;
+
+            color: #00e5ff;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           STUDENT FEEDBACK
+        ===================================================== */
+
+        .feedback-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                0 25px 100px;
+        }
+
+
+        .feedback-box {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .feedback-card {
+            padding: 30px;
+
+            border-radius: 16px;
+
+            border:
+                1px solid #1c293d;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a101c,
+                    #0d1422
+                );
+        }
+
+
+        .feedback-card h3 {
+            margin-bottom: 8px;
+
+            font-size: 20px;
+        }
+
+
+        .feedback-card p {
+            color: #78859a;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        .progress-item {
+            margin-top: 20px;
+        }
+
+
+        .progress-title {
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #8490a4;
+
+            font-size: 11px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .progress {
+            height: 7px;
+
+            background: #182338;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .progress span {
+            display: block;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #7c4dff
+                );
+
+            border-radius: 20px;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-section {
+            max-width: 850px;
+
+            margin: auto;
+
+            padding:
+                0 25px 100px;
+        }
+
+
+        .form-box {
+            padding: 35px;
+
+            background: #0a101c;
+
+            border:
+                1px solid #202d42;
+
+            border-radius: 18px;
+        }
+
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+
+        .input-group label {
+            display: block;
+
+            color: #9aa6b8;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            outline: none;
+
+            border:
+                1px solid #26344b;
+
+            border-radius: 9px;
+
+            background: #070c15;
+
+            color: white;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #00e5ff;
+
+            box-shadow:
+                0 0 20px
+                rgba(0,229,255,.06);
+        }
+
+
+        .input-group textarea {
+            min-height: 130px;
+
+            resize: vertical;
+        }
+
+
+        .star-input {
+            display: flex;
+
+            flex-direction: row-reverse;
+
+            justify-content: flex-end;
+
+            gap: 5px;
+        }
+
+
+        .star-input input {
+            display: none;
+        }
+
+
+        .star-input label {
+            font-size: 28px;
+
+            color: #27364b;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+
+        .star-input label:hover,
+        .star-input label:hover ~ label,
+        .star-input input:checked ~ label {
+            color: #ffd166;
+        }
+
+
+        .submit-btn {
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #7c4dff
+                );
+
+            color: #050810;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+
+        .submit-btn:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,229,255,.15);
+        }
+
+
+        #successMessage {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            color: #8df5c4;
+
+            background:
+                rgba(45, 211, 137, .08);
+
+            border:
+                1px solid
+                rgba(45, 211, 137, .2);
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            border-top:
+                1px solid #182337;
+
+            padding:
+                50px 25px 25px;
+
+            text-align: center;
+        }
+
+
+        .footer-logo {
+            font-size: 24px;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .footer-logo span {
+            color: #00e5ff;
+        }
+
+
+        .footer-text {
+            color: #657289;
+
+            margin-bottom: 25px;
+        }
+
+
+        .footer-links {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 25px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .footer-links a {
+            color: #7d899d;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+
+        .footer-links a:hover {
+            color: #00e5ff;
+        }
+
+
+        .copyright {
+            border-top:
+                1px solid #182337;
+
+            padding-top: 20px;
+
+            color: #4f5c70;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .rating-box {
+                grid-template-columns: 1fr;
+            }
+
+
+            .overall-rating {
+                border-right: none;
+
+                border-bottom:
+                    1px solid #202d42;
+
+                padding-bottom: 30px;
+            }
+
+
+            .reviews {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .navbar {
+                padding:
+                    12px 15px;
+            }
+
+
+            .logo {
+                font-size: 19px;
+            }
+
+
+            .logo-icon {
+                width: 34px;
+                height: 34px;
+            }
+
+
+            .nav-button {
+                padding:
+                    9px 12px;
+
+                font-size: 11px;
+            }
+
+
+            .hero {
+                padding:
+                    70px 18px 50px;
+            }
+
+
+            .hero h1 {
+                font-size: 45px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .rating-section,
+            .stats,
+            .reviews,
+            .feedback-section,
+            .form-section {
+                padding-left: 18px;
+
+                padding-right: 18px;
+            }
+
+
+            .rating-box {
+                padding: 25px 20px;
+            }
+
+
+            .stats {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .reviews {
+                grid-template-columns: 1fr;
+            }
+
+
+            .feedback-box,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+
+            .section-heading h2 {
+                font-size: 34px;
+            }
+
+
+            .form-box {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+
+        <a href="index.html"
+           class="logo">
+
+            <div class="logo-icon">
+                &lt;/&gt;
+            </div>
+
+            <span>
+                CodingWalle
+            </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Index
+            </a>
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="reviews.html"
+               class="active">
+                Reviews
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <a href="#write-review"
+           class="nav-button">
+
+            Write Review →
+
+        </a>
+
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <div class="hero-label">
+        STUDENT REVIEWS
+    </div>
+
+
+    <h1>
+
+        Loved By
+        <span>Learners.</span>
+
+    </h1>
+
+
+    <p>
+
+        See what students think about the CodingWalle
+        learning experience, courses and practical
+        approach to coding education.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     RATING OVERVIEW
+===================================================== -->
+
+<section class="rating-section">
+
+
+    <div class="rating-box">
+
+
+        <!-- OVERALL -->
+
+        <div class="overall-rating">
+
+
+            <div class="rating-number">
+                4.9
+            </div>
+
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+
+            <div class="rating-text">
+                Based on 500+ student reviews
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RATING BARS -->
+
+        <div class="rating-bars">
+
+
+            <div class="rating-row">
+
+                <span>
+                    5 ★
+                </span>
+
+                <div class="bar">
+                    <div class="bar-fill fill-5"></div>
+                </div>
+
+                <span>
+                    91%
+                </span>
+
+            </div>
+
+
+            <div class="rating-row">
+
+                <span>
+                    4 ★
+                </span>
+
+                <div class="bar">
+                    <div class="bar-fill fill-4"></div>
+                </div>
+
+                <span>
+                    7%
+                </span>
+
+            </div>
+
+
+            <div class="rating-row">
+
+                <span>
+                    3 ★
+                </span>
+
+                <div class="bar">
+                    <div class="bar-fill fill-3"></div>
+                </div>
+
+                <span>
+                    2%
+                </span>
+
+            </div>
+
+
+            <div class="rating-row">
+
+                <span>
+                    2 ★
+                </span>
+
+                <div class="bar">
+                    <div class="bar-fill fill-2"></div>
+                </div>
+
+                <span>
+                    1%
+                </span>
+
+            </div>
+
+
+            <div class="rating-row">
+
+                <span>
+                    1 ★
+                </span>
+
+                <div class="bar">
+                    <div class="bar-fill fill-1"></div>
+                </div>
+
+                <span>
+                    0%
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+
+    <div class="stat">
+
+        <h2>
+            4.9/5
+        </h2>
+
+        <p>
+            Average Rating
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <h2>
+            500+
+        </h2>
+
+        <p>
+            Student Reviews
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <h2>
+            96%
+        </h2>
+
+        <p>
+            Would Recommend
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <h2>
+            5
+        </h2>
+
+        <p>
+            Learning Branches
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     REVIEW HEADING
+===================================================== -->
+
+<div class="section-heading">
+
+
+    <div class="section-label">
+        STUDENT FEEDBACK
+    </div>
+
+
+    <h2>
+        What Students Say
+    </h2>
+
+
+    <p>
+        Real learning experiences from the CodingWalle community.
+    </p>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     REVIEW CARDS
+===================================================== -->
+
+<section class="reviews">
+
+
+    <!-- REVIEW 01 -->
+
+    <article class="review-card">
+
+
+        <div class="quote">
+            "
+        </div>
+
+
+        <div class="review-top">
+
+
+            <div class="avatar">
+                AR
+            </div>
+
+
+            <div class="student">
+
+                <h3>
+                    Aarav R.
+                </h3>
+
+                <p>
+                    Web Development Student
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+
+        <p class="review-text">
+
+            The HTML and CSS lessons were very easy
+            to understand. I started as a complete
+            beginner and built my first responsive
+            website.
+
+        </p>
+
+
+        <span class="course-name">
+            HTML + CSS
+        </span>
+
+
+    </article>
+
+
+
+    <!-- REVIEW 02 -->
+
+    <article class="review-card">
+
+
+        <div class="quote">
+            "
+        </div>
+
+
+        <div class="review-top">
+
+
+            <div class="avatar">
+                SP
+            </div>
+
+
+            <div class="student">
+
+                <h3>
+                    Siya P.
+                </h3>
+
+                <p>
+                    Python Student
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+
+        <p class="review-text">
+
+            Python finally started making sense to me.
+            The step-by-step approach helped me understand
+            programming logic instead of just memorizing code.
+
+        </p>
+
+
+        <span class="course-name">
+            Python
+        </span>
+
+
+    </article>
+
+
+
+    <!-- REVIEW 03 -->
+
+    <article class="review-card">
+
+
+        <div class="quote">
+            "
+        </div>
+
+
+        <div class="review-top">
+
+
+            <div class="avatar">
+                VK
+            </div>
+
+
+            <div class="student">
+
+                <h3>
+                    Vedant K.
+                </h3>
+
+                <p>
+                    Programming Student
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+
+        <p class="review-text">
+
+            I really liked the practical approach.
+            Instead of only reading theory, I could
+            practice concepts and understand where
+            they are actually used.
+
+        </p>
+
+
+        <span class="course-name">
+            C Programming
+        </span>
+
+
+    </article>
+
+
+
+    <!-- REVIEW 04 -->
+
+    <article class="review-card">
+
+
+        <div class="quote">
+            "
+        </div>
+
+
+        <div class="review-top">
+
+
+            <div class="avatar">
+                NM
+            </div>
+
+
+            <div class="student">
+
+                <h3>
+                    Neha M.
+                </h3>
+
+                <p>
+                    AI Student
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+
+        <p class="review-text">
+
+            The AI fundamentals section gave me a
+            much clearer understanding of what AI
+            and machine learning actually mean.
+
+        </p>
+
+
+        <span class="course-name">
+            AI Fundamentals
+        </span>
+
+
+    </article>
+
+
+
+    <!-- REVIEW 05 -->
+
+    <article class="review-card">
+
+
+        <div class="quote">
+            "
+        </div>
+
+
+        <div class="review-top">
+
+
+            <div class="avatar">
+                RS
+            </div>
+
+
+            <div class="student">
+
+                <h3>
+                    Rohan S.
+                </h3>
+
+                <p>
+                    Cyber Security Student
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+
+        <p class="review-text">
+
+            The cybersecurity basics helped me understand
+            networking and security concepts in a simple
+            way. The explanations were beginner friendly.
+
+        </p>
+
+
+        <span class="course-name">
+            Cyber Security
+        </span>
+
+
+    </article>
+
+
+
+    <!-- REVIEW 06 -->
+
+    <article class="review-card">
+
+
+        <div class="quote">
+            "
+        </div>
+
+
+        <div class="review-top">
+
+
+            <div class="avatar">
+                AD
+            </div>
+
+
+            <div class="student">
+
+                <h3>
+                    Aditya D.
+                </h3>
+
+                <p>
+                    Database Student
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+
+        <p class="review-text">
+
+            SQL became much easier after practicing
+            queries and database concepts. I especially
+            liked the project-focused learning style.
+
+        </p>
+
+
+        <span class="course-name">
+            SQL Fundamentals
+        </span>
+
+
+    </article>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FEEDBACK INSIGHTS
+===================================================== -->
+
+<div class="section-heading">
+
+
+    <div class="section-label">
+        LEARNING EXPERIENCE
+    </div>
+
+
+    <h2>
+        Why Students Like CodingWalle
+    </h2>
+
+
+</div>
+
+
+
+<section class="feedback-section">
+
+
+    <div class="feedback-box">
+
+
+        <!-- CARD -->
+
+        <div class="feedback-card">
+
+
+            <h3>
+                Learning Experience
+            </h3>
+
+
+            <p>
+
+                Students rate the overall learning experience
+                highly because the content focuses on clarity,
+                practice and real-world concepts.
+
+            </p>
+
+
+            <div class="progress-item">
+
+
+                <div class="progress-title">
+
+                    <span>
+                        Easy To Understand
+                    </span>
+
+                    <span>
+                        94%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span style="width:94%"></span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="progress-item">
+
+
+                <div class="progress-title">
+
+                    <span>
+                        Practical Learning
+                    </span>
+
+                    <span>
+                        92%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span style="width:92%"></span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="progress-item">
+
+
+                <div class="progress-title">
+
+                    <span>
+                        Course Quality
+                    </span>
+
+                    <span>
+                        96%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span style="width:96%"></span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CARD -->
+
+        <div class="feedback-card">
+
+
+            <h3>
+                Student Confidence
+            </h3>
+
+
+            <p>
+
+                Our learning approach is designed to help
+                beginners become comfortable with coding
+                and gradually take on more challenging topics.
+
+            </p>
+
+
+            <div class="progress-item">
+
+
+                <div class="progress-title">
+
+                    <span>
+                        Coding Confidence
+                    </span>
+
+                    <span>
+                        90%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span style="width:90%"></span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="progress-item">
+
+
+                <div class="progress-title">
+
+                    <span>
+                        Project Skills
+                    </span>
+
+                    <span>
+                        88%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span style="width:88%"></span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="progress-item">
+
+
+                <div class="progress-title">
+
+                    <span>
+                        Would Recommend
+                    </span>
+
+                    <span>
+                        96%
+                    </span>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <span style="width:96%"></span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     WRITE REVIEW
+===================================================== -->
+
+<div class="section-heading"
+     id="write-review">
+
+
+    <div class="section-label">
+        SHARE YOUR EXPERIENCE
+    </div>
+
+
+    <h2>
+        Write A Review
+    </h2>
+
+
+    <p>
+        Your feedback can help other learners choose their path.
+    </p>
+
+
+</div>
+
+
+
+<section class="form-section">
+
+
+    <div class="form-box">
+
+
+        <form id="reviewForm">
+
+
+            <div class="form-row">
+
+
+                <div class="input-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-row">
+
+
+                <div class="input-group">
+
+                    <label for="course">
+                        Course
+                    </label>
+
+
+                    <select id="course"
+                            required>
+
+                        <option value="">
+                            Select a course
+                        </option>
+
+                        <option>
+                            HTML Fundamentals
+                        </option>
+
+                        <option>
+                            CSS Mastery
+                        </option>
+
+                        <option>
+                            JavaScript
+                        </option>
+
+                        <option>
+                            Python
+                        </option>
+
+                        <option>
+                            C Programming
+                        </option>
+
+                        <option>
+                            Java
+                        </option>
+
+                        <option>
+                            AI Fundamentals
+                        </option>
+
+                        <option>
+                            Machine Learning
+                        </option>
+
+                        <option>
+                            SQL Fundamentals
+                        </option>
+
+                        <option>
+                            Cyber Security Basics
+                        </option>
+
+                        <option>
+                            Linux Fundamentals
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Your Rating
+                    </label>
+
+
+                    <div class="star-input">
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star5"
+                            value="5"
+                            required
+                        >
+
+                        <label for="star5">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star4"
+                            value="4"
+                        >
+
+                        <label for="star4">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star3"
+                            value="3"
+                        >
+
+                        <label for="star3">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star2"
+                            value="2"
+                        >
+
+                        <label for="star2">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star1"
+                            value="1"
+                        >
+
+                        <label for="star1">
+                            ★
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="input-group">
+
+                <label for="review">
+                    Your Review
+                </label>
+
+
+                <textarea
+                    id="review"
+                    placeholder="Tell us about your learning experience..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Submit Review →
+
+            </button>
+
+
+            <div id="successMessage">
+
+                ✓ Thank you! Your review has been submitted
+                successfully.
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-logo">
+
+        <span>&lt;/&gt;</span>
+        CodingWalle
+
+    </div>
+
+
+    <p class="footer-text">
+
+        Learn. Code. Build. Become.
+
+    </p>
+
+
+    <div class="footer-links">
+
+
+        <a href="index.html">
+            Index
+        </a>
+
+
+        <a href="home.html">
+            Home
+        </a>
+
+
+        <a href="about.html">
+            About
+        </a>
+
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+
+        <a href="reviews.html">
+            Reviews
+        </a>
+
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 CodingWalle.
+        All Rights Reserved.
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     REVIEW FORM JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    const reviewForm =
+        document.getElementById("reviewForm");
+
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    reviewForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            successMessage.style.display =
+                "block";
+
+
+            reviewForm.reset();
+
+
+            setTimeout(
+                function() {
+
+                    successMessage.style.display =
+                        "none";
+
+                },
+                5000
+            );
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
